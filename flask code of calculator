@@ -5,15 +5,15 @@ app = Flask(__name__)
 @app.route('/', methods=['POST', 'GET'])
 def main():
     if request.method == 'POST':
-        expression = request.form['op']
+        operation = request.form['op']
         try:
-            result = eval(expression, {"__builtins__": None}, {})
+            output = eval(operation, {"__builtins__": None}, {})
         except Exception as e:
-            result = 'Error'
+            output = 'Error'
     else:
-        result = ''
+        output = ''
 
-    return render_template('home.html', result=result)
+    return render_template('home.html', output=output)
 
 
 if __name__ == '__main__':
